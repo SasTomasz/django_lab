@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class Article(models.Model):
     title = models.TextField()
     content = models.TextField()
@@ -7,3 +8,6 @@ class Article(models.Model):
 
     def __str__(self):
         return self.content
+
+    def update_counter(self):
+        print(f"Counter updated")
