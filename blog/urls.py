@@ -13,4 +13,9 @@ urlpatterns = [
     path("counter/<int:pk>/", views.ArticleCounterRedirectView.as_view(), name="article-counter"),
     path("details/<int:pk>/", views.ArticleDetailView.as_view(), name="article-detail"),
     path("go-to-django/", RedirectView.as_view(url="https://www.djangoproject.com/"), name="go-to-django"),
+    path('greeting/1', views.GreetingView.as_view(), name='greeting_1'),
+    path('greeting/2', views.GreetingChildView.as_view(), name='greeting_2'),
+    path('greeting/3', views.GreetingChildView.as_view(greeting="G'day"), name='greeting_3'),
+    path('publishers/', views.PublisherListView.as_view()),
+
 ]

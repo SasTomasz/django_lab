@@ -2,12 +2,13 @@ from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
 from django.views import View
 from django.views.generic.base import RedirectView
+from django.views.generic import ListView
 
-from .models import Article
+from . import models
 
 
 def article_list(request):
-    articles = Article.objects.all()
+    articles = models.Article.objects.all()
     return HttpResponse(articles)
 
 
@@ -39,7 +40,7 @@ class ArticleCounterRedirectView(RedirectView):
     pattern_name = "article-detail"
 
     def get_redirect_url(self, *args, **kwargs):
-        article = get_object_or_404(Article, pk=kwargs["pk"])
+        article = get_object_or_404(models.Article, pk=kwargs["pk"])
         article.update_counter()
         return super().get_redirect_url(*args, **kwargs)
 
@@ -47,3 +48,23 @@ class ArticleCounterRedirectView(RedirectView):
 class ArticleDetailView(View):
     def get(self, request, **kwargs):
         return HttpResponse(f"Redirect from another page + arguments: {kwargs.items()}")
+
+
+# The following class are example how to inherit an attribute and method from parent class and how to override them
+class GreetingView(View):
+    # Add a new attribute to class View
+    greeting = "Hello"
+
+    # Overriding a function get() from parent class
+    def get(self, request):
+        return HttpResponse(self.greeting)
+
+
+class GreetingChildView(GreetingView):
+    # attribute is overriding
+    greeting = "Morning to ya"
+
+
+class PublisherListView(ListView):
+    model = models.Publisher
+    template_name = 'blog/publishers.html'
