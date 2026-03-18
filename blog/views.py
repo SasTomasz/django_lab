@@ -69,16 +69,40 @@ class PublisherListView(ListView):
     model = models.Publisher
     template_name = 'blog/publishers.html'
 
+
 # class DetailView can add more context as clas ListView so with DetailView class more the one model
 # can be pass to template
 class PublisherDetailView(DetailView):
     model = models.Publisher
     template_name = 'blog/publishers-detail.html'
+
     # This is method to get more context
     def get_context_data(self, **kwargs):
         # Call the base implementation first to get a context
         context = super().get_context_data(**kwargs)
         # Add in a QuerySet of all the books
+        # TODO Figure out how to get only book connected with author or publisher
         context["book_list"] = models.Book.objects.all()
-        print(f"DEBUG: {context["book_list"]}")
+        print(f"DEBUG: context --> {context["book_list"]}")
+        print(f"DEBUG: kwargs --> {kwargs}")
         return context
+
+
+class PublisherTwoDetailView(DetailView):
+    context_object_name = "publisher"
+    queryset = models.Publisher.objects.all()
+    template_name = 'blog/publishers-2-detail.html'
+
+    # TODO Figure out why this class pass publishers only as a one element but if I use exact query within a
+    #   get_context_data() func. it works fine
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["my_publishers"] = models.Publisher.objects.all()
+        return context
+
+
+class BookListView(ListView):
+    queryset = models.Book.objects.order_by("-publication_date")
+    context_object_name = "book_list"
+    template_name = 'blog/books.html'

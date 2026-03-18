@@ -18,5 +18,7 @@ urlpatterns = [
     path('greeting/3', views.GreetingChildView.as_view(greeting="G'day"), name='greeting_3'),
     path('publishers/', views.PublisherListView.as_view()),
     path('publishers/<int:pk>/', views.PublisherDetailView.as_view()),
+    path('publishers-2/<int:pk>/', views.PublisherTwoDetailView.as_view()),
+    path('books/', views.BookListView.as_view()),
 
 ]

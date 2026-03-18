@@ -1,0 +1,13 @@
+<html lang="pl">
+<body>
+<h1>Publishers' Addresses</h1>
+<h2>{{ publisher.address }}</h2>
+<ul>
+{% block content %}
+        {% for my_publisher in my_publishers %}
+            <li>{{ my_publisher.city }}</li>
+        {% endfor %}
+</ul>
+{% endblock %}
+</body>
+</html>
