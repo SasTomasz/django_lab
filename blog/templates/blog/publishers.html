@@ -3,8 +3,13 @@
 {% block content %}
     <h2>Publishers</h2>
     <ul>
+        {# This object_list variable stores the publishers list because it use generic class ListView #}
+        {# and if we want to use other models we can't because this generic ListView class pass only object #}
+        {# that is set in model variable inside a view class. Of course this can be resolve with context mechanism #}
+        {# Django is able to get object_list also using the lowercased version of the model class’ name #}
+        {# so it also can be done as publisher_list (lowercased.model.class.name_list) #}
         {% for publisher in object_list %}
-            <li>{{ publisher.name }}</li>
+            <li><a href="{{ publisher.pk }}">{{ publisher.name }}</a></li>
         {% endfor %}
     </ul>
 {% endblock %}

@@ -2,7 +2,7 @@ from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
 from django.views import View
 from django.views.generic.base import RedirectView
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 
 from . import models
 
@@ -68,3 +68,17 @@ class GreetingChildView(GreetingView):
 class PublisherListView(ListView):
     model = models.Publisher
     template_name = 'blog/publishers.html'
+
+# class DetailView can add more context as clas ListView so with DetailView class more the one model
+# can be pass to template
+class PublisherDetailView(DetailView):
+    model = models.Publisher
+    template_name = 'blog/publishers-detail.html'
+    # This is method to get more context
+    def get_context_data(self, **kwargs):
+        # Call the base implementation first to get a context
+        context = super().get_context_data(**kwargs)
+        # Add in a QuerySet of all the books
+        context["book_list"] = models.Book.objects.all()
+        print(f"DEBUG: {context["book_list"]}")
+        return context
