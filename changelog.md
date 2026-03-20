@@ -10,6 +10,7 @@
 - [ ] Get more knowledge about [Django template language](https://docs.djangoproject.com/en/6.0/topics/templates/)
   - [ ] Continue from [Django Template Language](https://docs.djangoproject.com/en/6.0/topics/templates/#the-django-template-language)
 - [ ] Resolve all TODOs from code
+- [ ] Check the resources on my private Chrome within group "Tailwind"
 
 **2026-03-18**
 * Continue learning of Django basics (class-based views)
