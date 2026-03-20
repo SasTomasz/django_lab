@@ -6,7 +6,9 @@
 * Set Author.last_accesed field every time Author is requested
 
 **TODO**
-- [ ] Start next lesson from [Viewing subset of objects](https://docs.djangoproject.com/en/6.0/topics/class-based-views/generic-display/#viewing-subsets-of-objects)
+- [x] Start next lesson from [Viewing subset of objects](https://docs.djangoproject.com/en/6.0/topics/class-based-views/generic-display/#viewing-subsets-of-objects)
+- [ ] Get more knowledge about [Django template language](https://docs.djangoproject.com/en/6.0/topics/templates/)
+  - [ ] Continue from [Django Template Language](https://docs.djangoproject.com/en/6.0/topics/templates/#the-django-template-language)
 - [ ] Resolve all TODOs from code
 
 **2026-03-18**
