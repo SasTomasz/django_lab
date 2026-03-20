@@ -2,6 +2,8 @@
 * Add logging
 * Using get_queryset class function with class view
 * Add more HTML files
+* Add a new filed to Author model
+* Set Author.last_accesed field every time Author is requested
 
 **TODO**
 - [ ] Start next lesson from [Viewing subset of objects](https://docs.djangoproject.com/en/6.0/topics/class-based-views/generic-display/#viewing-subsets-of-objects)

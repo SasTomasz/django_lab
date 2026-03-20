@@ -2,6 +2,7 @@ import logging
 
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
+from django.utils import timezone
 from django.views import View
 from django.views.generic.base import RedirectView
 from django.views.generic import ListView, DetailView
@@ -138,3 +139,15 @@ class PublisherBookListView(ListView):
         # Add in the publisher
         context["publisher"] = self.publisher
         return context
+
+
+class AuthorDetailView(DetailView):
+    queryset = models.Author.objects.all()
+    template_name = 'blog/author.html'
+
+    def get_object(self):
+        obj = super().get_object()
+        # Record the last accessed date
+        obj.last_accessed = timezone.now()
+        obj.save()
+        return obj

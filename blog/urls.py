@@ -22,5 +22,6 @@ urlpatterns = [
     path('books/', views.BookListView.as_view()),
     path('books/acme', views.AcmeBookListView.as_view()),
     path("books/<publisher>/", views.PublisherBookListView.as_view()),
+    path("authors/<int:pk>/", views.AuthorDetailView.as_view(), name="author-detail"),
 
 ]
