@@ -1,3 +1,5 @@
+import logging
+
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
 from django.views import View
@@ -6,6 +8,8 @@ from django.views.generic import ListView, DetailView
 
 from . import models
 
+logger = logging.getLogger("django")
+logging.basicConfig(level=logging.DEBUG)
 
 def article_list(request):
     articles = models.Article.objects.all()
@@ -106,3 +110,31 @@ class BookListView(ListView):
     queryset = models.Book.objects.order_by("-publication_date")
     context_object_name = "book_list"
     template_name = 'blog/books.html'
+
+
+class AcmeBookListView(ListView):
+    context_object_name = "book_list"
+    queryset = models.Book.objects.filter(publisher__name="ACME Publishing")
+    template_name = "blog/acme_list.html"
+
+
+class PublisherBookListView(ListView):
+    template_name = "blog/books_by_publisher.html"
+
+    def get_queryset(self):
+        logs = {
+            "request": self.request,
+            "queryset": self.queryset,
+            "user": self.request.user,
+        }
+        logger.info(logs)
+        self.publisher = get_object_or_404(models.Publisher, name=self.kwargs["publisher"])
+        books = models.Book.objects.filter(publisher=self.publisher)
+        return books
+
+    def get_context_data(self, **kwargs):
+        # Call the base implementation first to get a context
+        context = super().get_context_data(**kwargs)
+        # Add in the publisher
+        context["publisher"] = self.publisher
+        return context

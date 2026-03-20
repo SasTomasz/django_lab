@@ -2,6 +2,8 @@
 <body>
 <h1>Publishers' Addresses</h1>
 <h2>{{ publisher.address }}</h2>
+<h3>Variable publisher: {{ publisher }}</h3>
+<h3>Variable my_publishers: {{ my_publishers }}</h3>
 <ul>
 {% block content %}
         {% for my_publisher in my_publishers %}

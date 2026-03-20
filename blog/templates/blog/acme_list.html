@@ -1,0 +1,13 @@
+<html lang="pl">
+<body>
+<h1>Acme Book List</h1>
+
+<ul>
+{% block content %}
+        {% for book in book_list %}
+            <li>{{ book.title }}</li>
+        {% endfor %}
+</ul>
+{% endblock %}
+</body>
+</html>

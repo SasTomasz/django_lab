@@ -1,10 +1,15 @@
-**2026-03-18**
-* Continue learning of Django basics (class-based views)
-* Create some views and models to try how different approach works
+**2026-03-20**
+* Add logging
+* Using get_queryset class function with class view
+* Add more HTML files
 
 **TODO**
 - [ ] Start next lesson from [Viewing subset of objects](https://docs.djangoproject.com/en/6.0/topics/class-based-views/generic-display/#viewing-subsets-of-objects)
 - [ ] Resolve all TODOs from code
+
+**2026-03-18**
+* Continue learning of Django basics (class-based views)
+* Create some views and models to try how different approach works
 
 **2026-03-16**
 * Get more knowledge about classes: View, TemplateView, RedirectView
