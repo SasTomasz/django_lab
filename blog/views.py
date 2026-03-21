@@ -81,15 +81,17 @@ class PublisherDetailView(DetailView):
     model = models.Publisher
     template_name = 'blog/publishers-detail.html'
 
+
     # This is method to get more context
     def get_context_data(self, **kwargs):
         # Call the base implementation first to get a context
         context = super().get_context_data(**kwargs)
+        logger.info(f"Context --> {context}")
         # Add in a QuerySet of all the books
-        # TODO Figure out how to get only book connected with author or publisher
-        context["book_list"] = models.Book.objects.all()
-        print(f"DEBUG: context --> {context["book_list"]}")
-        print(f"DEBUG: kwargs --> {kwargs}")
+        context["book_list"] = models.Book.objects.filter(publisher=kwargs["object"])
+
+        logger.info(f"context[book_list] --> {context["book_list"]}")
+        logger.info(f"kwargs --> {kwargs}")
         return context
 
 
