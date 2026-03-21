@@ -7,11 +7,11 @@
 * Update blog/urls to be more readable
 
 Next step: 
-* Continue learning from [template inheritance](https://docs.djangoproject.com/en/6.0/ref/templates/language/#template-inheritance)
+* Figure out how to resolve Markdown withing templates
 
 **TODO**
-- [ ] Get more knowledge about [Django template language](https://docs.djangoproject.com/en/6.0/topics/templates/)
-- [ ] Resolve all TODOs from code
+- [x] Get more knowledge about [Django template language](https://docs.djangoproject.com/en/6.0/topics/templates/)
+- [x] Resolve all TODOs from code
 - [ ] Figure out how to resolve Markdown withing templates
 - [ ] After finish this project continue from refactoring testspective project using class-based views, reusable 
 templates and rendering Markdown
