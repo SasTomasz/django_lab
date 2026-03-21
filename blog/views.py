@@ -10,7 +10,11 @@ from django.views.generic import ListView, DetailView
 from . import models
 
 logger = logging.getLogger("django")
-logging.basicConfig(level=logging.DEBUG)
+logging.basicConfig(
+    level=logging.DEBUG,
+    format="%(asctime)s - %(levelname)s - %(funcName)s - %(message)s",
+)
+
 
 def article_list(request):
     articles = models.Article.objects.all()
@@ -81,7 +85,6 @@ class PublisherDetailView(DetailView):
     model = models.Publisher
     template_name = 'blog/publishers-detail.html'
 
-
     # This is method to get more context
     def get_context_data(self, **kwargs):
         # Call the base implementation first to get a context
@@ -100,12 +103,13 @@ class PublisherTwoDetailView(DetailView):
     queryset = models.Publisher.objects.all()
     template_name = 'blog/publishers-2-detail.html'
 
-    # TODO Figure out why this class pass publishers only as a one element but if I use exact query within a
-    #   get_context_data() func. it works fine
-
+    # DetailView class is design in way that return particular object (with particular pk passed within kwargs)
+    # To change behavior or add more data to that generic view we can use get_context_data func. where is the
+    # possibility of passing additional context data
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["my_publishers"] = models.Publisher.objects.all()
+        logger.info(f"{self.__class__} --> {self.queryset}")
         return context
 
 

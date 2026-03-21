@@ -3,6 +3,8 @@
 * Learning basics of template language
 * Make base.html page as reusable element
 * Use base.html in index.html and books.html files
+* Play with some generic class method
+* Update blog/urls to be more readable
 
 Next step: 
 * Continue learning from [template inheritance](https://docs.djangoproject.com/en/6.0/ref/templates/language/#template-inheritance)
