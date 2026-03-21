@@ -7,6 +7,7 @@ from . import views
 urlpatterns = [
     path('', views.article_list, name='article_list'),
     path('template/', TemplateView.as_view(template_name="blog/about.html")),
+    path('template/base', TemplateView.as_view(template_name="blog/base.html")),
     path('name/<first_name>/<last_name>', views.NameView.as_view(), name='name'),
     path('test/01', views.Test01.as_view(), name='test_01'),
     path('test/02', views.Test02.as_view(), name='test_02'),
@@ -25,3 +26,4 @@ urlpatterns = [
     path("authors/<int:pk>/", views.AuthorDetailView.as_view(), name="author-detail"),
 
 ]
+# TODO Make this above patterns more readable
