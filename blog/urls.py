@@ -14,6 +14,7 @@ templates_patterns = [
 tests_patterns = [
     path('01/', views.Test01.as_view(), name='test_01'),
     path('02/', views.Test02.as_view(), name='test_02'),
+    path('markdown', views.MarkdownView.as_view(), name='markdown'),
 
 ]
 

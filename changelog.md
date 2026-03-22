@@ -1,3 +1,9 @@
+**2026-03-22**
+* Add possibility of using Markdown file (example on /blog/tests/markdown)
+
+**Next step:**
+* After refactor testspective file probably I will have much more topics to get more knowledge about
+
 **2026-03-21**
 * Add a new HTML files
 * Learning basics of template language
@@ -12,8 +18,8 @@ Next step:
 **TODO**
 - [x] Get more knowledge about [Django template language](https://docs.djangoproject.com/en/6.0/topics/templates/)
 - [x] Resolve all TODOs from code
-- [ ] Figure out how to resolve Markdown withing templates
-- [ ] After finish this project continue from refactoring testspective project using class-based views, reusable 
+- [x] Figure out how to resolve Markdown withing templates
+- [x] After finish this project continue from refactoring testspective project using class-based views, reusable 
 templates and rendering Markdown
 
 **2026-03-20**

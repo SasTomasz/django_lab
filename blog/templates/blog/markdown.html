@@ -1,0 +1,7 @@
+{% extends "blog/base.html" %}
+
+{% block title %}Markdown tests{% endblock title%}
+
+{% block content %}
+{{markdown_content|safe}}
+{% endblock content%}

@@ -1,11 +1,13 @@
 import logging
 
+import markdown
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
 from django.utils import timezone
 from django.views import View
 from django.views.generic.base import RedirectView
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, TemplateView
+from markdown.extensions.extra import extensions
 
 from . import models
 
@@ -14,6 +16,20 @@ logging.basicConfig(
     level=logging.DEBUG,
     format="%(asctime)s - %(levelname)s - %(funcName)s - %(message)s",
 )
+
+content = """
+# This is my markdown file
+This is example how markdown works. For example we can have a list: 
+
+* First object
+* Second object
+* Third object
+
+```
+# Or some part of python code
+context = super().get_context_data(**kwargs)
+```
+"""
 
 
 def article_list(request):
@@ -157,3 +173,14 @@ class AuthorDetailView(DetailView):
         obj.last_accessed = timezone.now()
         obj.save()
         return obj
+
+
+class MarkdownView(TemplateView):
+    template_name = 'blog/markdown.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        markdown_content = markdown.markdown(content, extensions=['fenced_code'])
+        context["markdown_content"] = markdown_content
+        return context
